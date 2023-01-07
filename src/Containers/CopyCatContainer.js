@@ -1,19 +1,14 @@
 import React from 'react';
 import CopyCat from '../Components/CopyCat/CopyCat';
 
-// const images = {
-//   copycat: 'https://content.codecademy.com/courses/React/react_photo_copycat.png',
-//   quietcat: 'https://content.codecademy.com/courses/React/react_photo_quietcat.png'
-// };
-
-
 class CopyCatContainer extends React.Component {
     constructor(props) {
     super(props);
 
     this.state = { 
       copying: true,
-      input:''
+      input:'',
+      copyCatName: ''
     };
 
     this.toggleTape = this.toggleTape.bind(this);
@@ -40,6 +35,7 @@ class CopyCatContainer extends React.Component {
         copying={this.state.copying}
         value={this.state.input}
         handleChange={this.handleChange}
+        copyCatName={this.state.copyCatName}
       />
     );
   };

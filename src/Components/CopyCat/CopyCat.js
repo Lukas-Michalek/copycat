@@ -1,5 +1,6 @@
 import React from 'react';
 import { styles } from '../../styles';
+import PropTypes from 'prop-types';
 
 const images = {
   copycat: 'https://content.codecademy.com/courses/React/react_photo_copycat.png',
@@ -16,7 +17,7 @@ class CopyCat extends React.Component {
 
      // Great tip on how to import all props from CopyCatContainer, is to assign them to a constant so I can simply use the constants istead of this.prop.value all the time. Instead of using const value= this.props.value, const onChange=this.props.onChange an so on ... I can do this:
 
-  const {value, handleChange, copying, toggleTape} = this.props;
+  const {value, handleChange, copying, toggleTape, copyCatName} = this.props;
 
   // this is equal to:
   //    const copying = this.props.copying;
@@ -28,7 +29,10 @@ class CopyCat extends React.Component {
     
     return (
       <div style={styles.divStyles}>
-        <h1>Copy Cat</h1>
+        
+        <h1>Copy Cat {copyCatName ? copyCatName : 'Tom'}</h1>
+        {/* another way how to do this woul be using the same logic as && but this time with OR -> || 
+        <h1>Copy Cat { copyCatName || 'Tom}</h1> => Saying, if copyCatName is true then show copyCatName, if it is false(nothing was passed down) show 'Tom */}
 
         <input
             
@@ -53,6 +57,22 @@ class CopyCat extends React.Component {
     );
   };
 }
+
+
+//Declaring PropTypes as static property on CopyCat
+CopyCat.propTypes = {
+  
+  value:            PropTypes.string.isRequired,
+  handleChange:     PropTypes.func.isRequired,    // Note that handle Change is FUNCTION so I need to use .func datatype
+  copying:          PropTypes.bool.isRequired,
+  toggleTape:       PropTypes.func.isRequired,
+  copyCatName:      PropTypes.string
+
+
+
+
+}
+
 
 
 
