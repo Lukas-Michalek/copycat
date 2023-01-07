@@ -28,3 +28,11 @@ const imgStyles = {
   marginTop: marginTop,
   width: width
 };
+
+// Note that this is absolutely valid as imgStyles and divStyles are constants(even though they contain objects)
+
+export const styles = {
+    
+    divStyles: divStyles,
+    imgStyles: imgStyles
+}
